@@ -39,6 +39,11 @@ class SendGrid::ApiHeader
     @data[:asm_group_id] = group_id.to_s
   end
 
+  def manage_supression_groups(asm_group_ids)
+    @data[:asm_groups_to_display] = []
+    @data[:asm_groups_to_display] |= Array.wrap(asm_group_ids)
+  end
+
   def to_json
     JSON.generate(@data, :array_nl => ' ')
   end

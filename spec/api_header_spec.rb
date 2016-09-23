@@ -52,5 +52,10 @@ describe SendGrid::ApiHeader do
       header.suppression_group 1234
       header.to_json.should eql '{"asm_group_id":"1234"}'
     end
+
+    it "contains asm_groups_to_display" do
+      header.manage_supression_groups 4147, 4145
+      header.to_json.should eql '{"asm_groups_to_display":[4147, 4145]}'
+    end
   end
 end
